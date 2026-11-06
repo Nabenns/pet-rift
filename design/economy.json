@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "updated": "2026-11-06",
+  "tiers": [
+    { "id": "Common",    "weight": 45.00, "pets": 4, "shard": 5,     "color": "#8FA0B8", "glow": 0.0 },
+    { "id": "Uncommon",  "weight": 30.00, "pets": 2, "shard": 12,    "color": "#5FD08A", "glow": 0.0 },
+    { "id": "Rare",      "weight": 15.00, "pets": 2, "shard": 30,    "color": "#4FA8FF", "glow": 0.0 },
+    { "id": "Epic",      "weight": 7.50,  "pets": 2, "shard": 90,    "color": "#B36BFF", "glow": 0.1 },
+    { "id": "Legendary", "weight": 2.00,  "pets": 2, "shard": 300,   "color": "#FFC24A", "glow": 0.25 },
+    { "id": "Mythic",    "weight": 0.45,  "pets": 1, "shard": 1200,  "color": "#FF6B4A", "glow": 0.4 },
+    { "id": "Divine",    "weight": 0.05,  "pets": 1, "shard": 6000,  "color": "#7CF6FF", "glow": 0.6 }
+  ],
+  "variants": [
+    { "id": "Normal", "chance": 85, "shard_mult": 1.0,  "material": "SmoothPlastic", "tint": "#FFFFFF" },
+    { "id": "Golden", "chance": 12, "shard_mult": 1.25, "material": "Metal",         "tint": "#FFE08A" },
+    { "id": "Dark",   "chance": 3,  "shard_mult": 1.6,  "material": "SmoothPlastic", "tint": "#4A3A6B" }
+  ],
+  "pets": [
+    { "id": "Mochi",     "tier": "Common",    "ears": "tall",  "tail": "puff",  "build": "chibi" },
+    { "id": "Pip",       "tier": "Common",    "ears": "round", "tail": "puff",  "build": "chibi" },
+    { "id": "Bonbon",    "tier": "Common",    "ears": "round", "tail": "fan",   "build": "chibi" },
+    { "id": "Nori",      "tier": "Common",    "ears": "tall",  "tail": "fan",   "build": "long"  },
+    { "id": "Kobo",      "tier": "Uncommon",  "ears": "round", "tail": "puff",  "build": "chibi" },
+    { "id": "Fernpup",   "tier": "Uncommon",  "ears": "tall",  "tail": "fan",   "build": "long"  },
+    { "id": "Marble",    "tier": "Rare",      "ears": "tall",  "tail": "plume", "build": "chibi" },
+    { "id": "Tide",      "tier": "Rare",      "ears": "fin",   "tail": "fan",   "build": "long"  },
+    { "id": "Zephyr",    "tier": "Epic",      "ears": "fin",   "tail": "plume", "build": "chibi" },
+    { "id": "Vesper",    "tier": "Epic",      "ears": "tall",  "tail": "plume", "build": "long"  },
+    { "id": "Aurelia",   "tier": "Legendary", "ears": "tall",  "tail": "plume", "build": "chibi" },
+    { "id": "Volt",      "tier": "Legendary", "ears": "round", "tail": "fan",   "build": "chibi" },
+    { "id": "Emberfox",  "tier": "Mythic",    "ears": "tall",  "tail": "plume", "build": "chibi" },
+    { "id": "Astraeon",  "tier": "Divine",    "ears": "fin",   "tail": "plume", "build": "long"  }
+  ],
+  "luck": {
+    "base": 1.0,
+    "applies_to": ["Legendary", "Mythic", "Divine"],
+    "method": "multiply_weight_then_renormalize",
+    "upgrade_step": 0.15,
+    "upgrade_levels": 10,
+    "gamepass_bonus": 0.5,
+    "stack_max": 3.0
+  },
+  "pity": {
+    "field": "rolls_since_divine",
+    "threshold": 8000,
+    "grants": "Divine",
+    "natural_miss_rate": 0.0183
+  },
+  "roll": {
+    "animation_seconds": 2.4,
+    "cooldown_seconds": 3.0,
+    "cooldown_step": 0.92,
+    "cooldown_levels": 8,
+    "fast_roll_multiplier": 2.0,
+    "rate_limit_per_minute": 45,
+    "inventory_cap": 500
+  },
+  "upgrades": {
+    "luck":        { "base_cost": 150, "growth": 1.6, "levels": 10 },
+    "roll_speed":  { "base_cost": 100, "growth": 1.5, "levels": 8 }
+  },
+  "gamepasses": [
+    { "id": "FastRoll", "price_robux": 299, "grants": "cooldown / 2" },
+    { "id": "AutoRoll", "price_robux": 599, "grants": "roll otomatis tiap cooldown" },
+    { "id": "LuckPlus", "price_robux": 399, "grants": "luck +0.5" },
+    { "id": "VIP",      "price_robux": 499, "grants": "shard +15%, equip 3 slot" }
+  ],
+  "index_rewards": [
+    { "slots": 10, "reward": "500 shard" },
+    { "slots": 21, "reward": "2000 shard" },
+    { "slots": 34, "reward": "luck boost 1.5x selama 1 jam" },
+    { "slots": 42, "reward": "1 Divine token (roll dijamin Divine)" }
+  ]
+}
