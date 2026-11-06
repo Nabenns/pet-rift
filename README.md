@@ -16,24 +16,40 @@ Status: **pra-kode**. Isi repo sekarang: dokumen desain lengkap, tabel ekonomi (
 | `docs/05-BACKEND-SCHEMA.md` | Skema profil (inventori sebagai hitungan, bukan daftar item), operasi + invarian, migration, volume |
 | `docs/06-IMPLEMENTATION-PLAN.md` | F0-F8, anggaran 10 hari, gate per fase, urutan commit, apa yang dikorbankan kalau molor |
 | `docs/07-ART-PIPELINE.md` | Roster 14 pet + palet, parameter spec, anggaran part, style test 3 iterasi, audit otomatis |
+| `docs/08-TASK-SPLIT.md` | Pembagian tugas 2 orang (kode vs 3D): kepemilikan file, jadwal H+1..H+10, definisi selesai, gate G3D, protokol PR, jalur kalau 3D telat |
+| `docs/09-3D-CONTRACT.md` | Kontrak mesh dari Astra: tri, skala, pivot, orientasi, varian lewat colormap, prompt template, alur import, audit |
 
 ## Struktur
 
 ```
 design/economy.json     satu-satunya sumber angka (tier, bobot, pet, varian, harga, pity)
 design/tokens.json      token warna UI
+design/pet-assets.json  kontrak aset 3D: mesh + colormap per pet, status per pet
 tools/gen_economy.py    economy.json -> src/shared/Economy.luau
+tools/gen_pet_assets.py pet-assets.json -> src/shared/PetAssets.luau (menolak roster bercabang)
 tools/sim_rolls.py      100.000 roll x 3 skenario luck -> captures/G1-sim.csv (gate G1)
 src/shared/Economy.luau HASIL GENERASI, jangan diedit tangan
+src/shared/PetAssets.luau HASIL GENERASI, mesh = nil berarti pakai primitif
 src/pets/EmberFox.luau  pet contoh (Mythic), dibangun dari primitif
+assets/pets/<petid>/    mesh .glb + 3 colormap .png dari pekerjaan 3D
 docs/                   dokumen di atas
 captures/               screenshot iterasi + bukti gate
 ```
+
+## Pembagian kerja
+
+Dua orang: kode dan 3D. Batasnya tegas supaya tidak ada tabrakan file dan tidak ada yang menunggu.
+
+- **Kode** (`src/`, `tools/`, `design/economy.json`): server roll, inventori, UI, `Pets/Builder` primitif, integrasi mesh.
+- **3D** (`assets/pets/`, `design/pet-assets.json`): 14 mesh dari Astra yang dirapikan di Blender, 3 colormap per pet, thumbnail.
+
+Jembatannya satu tabel aset: kalau sebuah pet belum punya mesh, loader memakai primitif. Jadi 3D tidak pernah menahan rilis, dan kode tidak pernah menunggu aset. Jadwal, gate, dan protokol PR ada di `docs/08-TASK-SPLIT.md`; spesifikasi mesh ada di `docs/09-3D-CONTRACT.md`.
 
 ## Menjalankan
 
 ```bash
 python3 tools/gen_economy.py     # regenerate Economy.luau dari economy.json
+python3 tools/gen_pet_assets.py  # regenerate PetAssets.luau, gagal kalau roster bercabang
 python3 tools/sim_rolls.py       # verifikasi distribusi roll (gate G1)
 ```
 

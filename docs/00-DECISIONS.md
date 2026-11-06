@@ -84,11 +84,32 @@ Semua target sentuh minimal 44 px, tidak ada fitur yang butuh hover, tidak ada t
 
 Alasan: mayoritas pemain Roblox main di HP. Game RNG yang tombolnya kecil akan mati di hari pertama.
 
+### D12 — Dua jalur aset: mesh untuk rilis, primitif sebagai fallback wajib
+
+Bentuk pet boleh datang dari mesh hasil AI (Astra) yang dirapikan di Blender, tapi **jalur primitif tetap dibangun** dan tetap jadi default kalau aset belum ada.
+
+Mekanismenya satu tabel: `design/pet-assets.json` -> `src/shared/PetAssets.luau`. Loader bertanya "pet ini punya mesh berstatus `done`?". Kalau ya, bangun `MeshPart`; kalau tidak, `Pets/Builder.build()`. Kode tidak pernah bercabang di tempat lain.
+
+Alasan:
+
+1. D2 benar soal biaya, tapi salah soal mutu: review Emberfox primitif 3-5/10, dan 3-5/10 tidak cukup untuk game yang menjual koleksi. Kalau ada orang yang bisa menghasilkan mesh, memaksakan primitif hanya mempertahankan kelemahan.
+2. Dua jalur menghilangkan blocking. 3D bisa telat tanpa menahan rilis, dan kode tidak perlu menunggu aset untuk diuji.
+3. Varian tetap murah: 14 mesh x 3 colormap = 42 tampilan. Yang berubah dari D2 hanya "ganti material" jadi "ganti colormap", bukan jumlah pekerjaan varian.
+
+Konsekuensi yang diterima:
+
+- Aset di-upload dari akun pemilik place, bukan akun pembuat. Teman menyerahkan file, owner yang import.
+- Tekstur tidak boleh punya lighting bake, kalau tidak varian Golden/Dark mustahil tanpa generate ulang.
+- Anggaran tri jadi angka baru yang harus dijaga: <= 5.000 per pet (batas engine ±20.000).
+- Kalau mesin 3D berhenti di tengah jalan, game tetap rilis dengan campuran gaya. Itu diterima, bukan disembunyikan.
+
+Kontrak teknis lengkap ada di `09-3D-CONTRACT.md`, pembagian tugas di `08-TASK-SPLIT.md`.
+
 ## Terbuka (default kalau tidak dibantah)
 
 | # | Pertanyaan | Default yang akan dipakai | Diputuskan sebelum |
 |---|---|---|---|
-| O1 | Gaya final: blocky dipertahankan atau pindah mesh untuk tier atas? | Blocky untuk semua tier v1; mesh hanya kalau style test gagal | F4 |
+| O1 | Gaya final: blocky dipertahankan atau pindah mesh untuk tier atas? | Diukur di gate, bukan dirasa: mesh kalau G3D-3 lulus (14 mesh di H+8), hybrid kalau cuma 8, primitif kalau kurang dari 8 | H+6 |
 | O2 | Nama game "Pet Rift" dipakai? | Ya, sementara. Ganti nama = ganti judul + ikon, bukan arsitektur | F1 |
 | O3 | Harga gamepass disesuaikan pasar Indonesia? | Ya, angka di PRD adalah batas atas; boleh turun, tidak boleh naik | F6 |
 | O4 | Ada trading antar pemain? | Tidak di v1, tidak di v2. Kalau nanti, butuh audit duplikasi penuh dulu | setelah v1 rilis |

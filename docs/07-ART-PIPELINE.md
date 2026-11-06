@@ -2,6 +2,8 @@
 
 Semua pet dibangun dari satu fungsi: `Pets/Builder.build(spec, variant) -> Model`. Tidak ada model yang dibangun manual di Studio. Ini yang membuat 14 pet x 3 varian = 42 hasil bisa dikelola satu orang.
 
+> Sejak D12 (`00-DECISIONS.md`), bentuk pet boleh datang dari mesh (Astra) lewat `09-3D-CONTRACT.md`. Dokumen ini tetap berlaku sebagai **jalur fallback wajib** dan sebagai spesifikasi bentuk: proporsi, palet, tipe telinga/ekor, urutan pembangunan, dan tiga pertanyaan penilaian dipakai kedua jalur. Kalau mesh tersedia, `07` bagian 2-3 (spec dan anggaran part) tidak dipakai; bagian 1, 4, 8, 9 tetap.
+
 ## 1. Roster
 
 14 pet, 7 tier, 4 Common / 2 Uncommon / 2 Rare / 2 Epic / 2 Legendary / 1 Mythic / 1 Divine. Warna: `body`, `belly`, `accent` (telinga dalam, moncong, ujung ekor).
