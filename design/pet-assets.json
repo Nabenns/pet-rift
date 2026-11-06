@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "updated": "2026-11-06",
+  "note": "Kontrak aset 3D. mesh/colormaps null = belum ada, loader pakai primitif. Isi asset id setelah upload dari akun pemilik place. Jangan ubah id/tier tanpa mengubah design/economy.json.",
+  "pets": [
+    { "id": "Mochi",    "tier": "Common",    "build": "chibi", "height": 2.7, "mesh": null, "colormaps": { "Normal": null, "Golden": null, "Dark": null }, "tris": 0, "status": "todo" },
+    { "id": "Pip",      "tier": "Common",    "build": "chibi", "height": 2.7, "mesh": null, "colormaps": { "Normal": null, "Golden": null, "Dark": null }, "tris": 0, "status": "todo" },
+    { "id": "Bonbon",   "tier": "Common",    "build": "chibi", "height": 2.7, "mesh": null, "colormaps": { "Normal": null, "Golden": null, "Dark": null }, "tris": 0, "status": "todo" },
+    { "id": "Nori",     "tier": "Common",    "build": "long",  "height": 2.4, "mesh": null, "colormaps": { "Normal": null, "Golden": null, "Dark": null }, "tris": 0, "status": "todo" },
+    { "id": "Kobo",     "tier": "Uncommon",  "build": "chibi", "height": 2.7, "mesh": null, "colormaps": { "Normal": null, "Golden": null, "Dark": null }, "tris": 0, "status": "todo" },
+    { "id": "Fernpup",  "tier": "Uncommon",  "build": "long",  "height": 2.4, "mesh": null, "colormaps": { "Normal": null, "Golden": null, "Dark": null }, "tris": 0, "status": "todo" },
+    { "id": "Marble",   "tier": "Rare",      "build": "chibi", "height": 2.7, "mesh": null, "colormaps": { "Normal": null, "Golden": null, "Dark": null }, "tris": 0, "status": "todo" },
+    { "id": "Tide",     "tier": "Rare",      "build": "long",  "height": 2.4, "mesh": null, "colormaps": { "Normal": null, "Golden": null, "Dark": null }, "tris": 0, "status": "todo" },
+    { "id": "Zephyr",   "tier": "Epic",      "build": "chibi", "height": 2.7, "mesh": null, "colormaps": { "Normal": null, "Golden": null, "Dark": null }, "tris": 0, "status": "todo" },
+    { "id": "Vesper",   "tier": "Epic",      "build": "long",  "height": 2.4, "mesh": null, "colormaps": { "Normal": null, "Golden": null, "Dark": null }, "tris": 0, "status": "todo" },
+    { "id": "Aurelia",  "tier": "Legendary", "build": "chibi", "height": 2.7, "mesh": null, "colormaps": { "Normal": null, "Golden": null, "Dark": null }, "tris": 0, "status": "todo" },
+    { "id": "Volt",     "tier": "Legendary", "build": "chibi", "height": 2.7, "mesh": null, "colormaps": { "Normal": null, "Golden": null, "Dark": null }, "tris": 0, "status": "todo" },
+    { "id": "Emberfox", "tier": "Mythic",    "build": "chibi", "height": 2.7, "mesh": null, "colormaps": { "Normal": null, "Golden": null, "Dark": null }, "tris": 0, "status": "todo" },
+    { "id": "Astraeon", "tier": "Divine",    "build": "long",  "height": 2.4, "mesh": null, "colormaps": { "Normal": null, "Golden": null, "Dark": null }, "tris": 0, "status": "todo" }
+  ]
+}
