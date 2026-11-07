@@ -1,0 +1,14 @@
+{
+  "pet": "mochi",
+  "tier": "Common",
+  "build": "chibi",
+  "tris": 3120,
+  "height_studs": 2.7,
+  "width_studs": 2.1,
+  "depth_studs": 2.9,
+  "colormaps": ["normal", "gold", "dark"],
+  "renders": ["08", "30", "88"],
+  "updated": "2026-11-07",
+  "status": "review",
+  "notes": "contoh format. ganti angkanya, jangan dibiarkan."
+}

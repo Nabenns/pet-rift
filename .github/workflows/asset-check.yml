@@ -1,0 +1,44 @@
+name: asset-check
+
+on:
+  pull_request:
+    paths:
+      - "assets/pets/**"
+      - "design/pet-assets.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validasi aset
+        run: |
+          python3 tools/check_assets.py --format markdown --no-fail >> "$GITHUB_STEP_SUMMARY"
+          if ! python3 tools/check_assets.py; then
+            echo "ASSET_CHECK_FAILED=1" >> "$GITHUB_ENV"
+          fi
+
+      - name: Komentar preview di PR
+        if: github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 tools/check_assets.py --format markdown --no-fail \
+            --render-preview "${{ github.event.pull_request.head.sha }}" > preview.md
+          gh pr comment "${{ github.event.pull_request.number }}" --body-file preview.md
+
+      - name: Gagal kalau ada error
+        if: env.ASSET_CHECK_FAILED == '1'
+        run: |
+          echo "Ada error di aset. Lihat tabel di atas."
+          exit 1

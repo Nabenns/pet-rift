@@ -18,6 +18,7 @@ Status: **pra-kode**. Isi repo sekarang: dokumen desain lengkap, tabel ekonomi (
 | `docs/07-ART-PIPELINE.md` | Roster 14 pet + palet, parameter spec, anggaran part, style test 3 iterasi, audit otomatis |
 | `docs/08-TASK-SPLIT.md` | Pembagian tugas 2 orang (kode vs 3D): kepemilikan file, jadwal H+1..H+10, definisi selesai, gate G3D, protokol PR, jalur kalau 3D telat |
 | `docs/09-3D-CONTRACT.md` | Kontrak mesh dari Astra: tri, skala, pivot, orientasi, varian lewat colormap, prompt template, alur import, audit |
+| `docs/10-UPDATE-PROTOCOL.md` | Protokol update 3D: commit -> PR -> bot komentar preview; cara owner melihat progres tanpa bertanya |
 
 ## Struktur
 
@@ -48,9 +49,10 @@ Jembatannya satu tabel aset: kalau sebuah pet belum punya mesh, loader memakai p
 ## Menjalankan
 
 ```bash
-python3 tools/gen_economy.py     # regenerate Economy.luau dari economy.json
-python3 tools/gen_pet_assets.py  # regenerate PetAssets.luau, gagal kalau roster bercabang
-python3 tools/sim_rolls.py       # verifikasi distribusi roll (gate G1)
+python3 tools/gen_economy.py      # regenerate Economy.luau dari economy.json
+python3 tools/gen_pet_assets.py   # regenerate PetAssets.luau, gagal kalau roster bercabang
+python3 tools/check_assets.py     # status aset 3D per pet: folder, colormap, render, tri, tinggi
+python3 tools/sim_rolls.py        # verifikasi distribusi roll (gate G1)
 ```
 
 `sim_rolls.py` memakai algoritma yang sama dengan `Economy.luau`: bobot integer per 10.000, luck mengali tier chase lalu renormalisasi, pity memaksa Divine. Hasil terakhir: **G1 PASS** di luck 1,0 / 2,0 / 3,0 (100.000 roll per skenario, semua tier dalam toleransi). Bukti: `captures/G1-sim.csv`.

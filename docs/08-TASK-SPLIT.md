@@ -21,6 +21,7 @@ Satu owner (kode) + satu teman (3D, pakai Astra). Dokumen ini mengikat: siapa bo
 | `assets/pets/**` | 3D | `.glb` + colormap `.png` + render bukti |
 | `captures/3d/**` | 3D | screenshot 3 jarak per pet |
 | `docs/09-3D-CONTRACT.md` | 3D | boleh menambah klarifikasi; mengubah spesifikasi = PR + alasan |
+| `docs/10-UPDATE-PROTOCOL.md` | owner | 3D baca: cara lapor tiap selesai satu pet |
 | `docs/00-08` | owner | 3D baca, tidak edit |
 
 Tabrakan yang paling sering terjadi di proyek dua orang: dua-duanya mengedit `economy.json` lalu saling menimpa. Itu sebabnya angka dipisah dari aset.
@@ -107,6 +108,12 @@ Baca 3 file ini dulu, urutannya penting:
 1. docs/07-ART-PIPELINE.md  -> roster 14 pet, palet, proporsi, aturan bentuk
 2. docs/09-3D-CONTRACT.md   -> spek mesh dari Astra: tri, skala, pivot, varian, cara upload
 3. docs/04-DESIGN-BRIEF.md  -> arah visual dan palet UI
+
+Cara lapor progres: docs/10-UPDATE-PROTOCOL.md. Pendeknya, tiap selesai satu pet:
+jalankan `python3 tools/check_assets.py` (harus 0 error), push branch `asset/<pet>`,
+buka PR. Bot langsung komentar tabel cek + preview 3 jarak di PR itu, jadi gw bisa
+lihat tanpa nanya. Kalau baru setengah jadi, tetap push branch-nya dan tulis status
+`wip` - gw lebih suka lihat progres mentah daripada nunggu kabar.
 
 Intinya: 14 pet, tiap pet 3 varian (Normal/Golden/Dark) yang dibuat dari colormap,
 jadi 42 tampilan dari 14 mesh. Semua gaya harus konsisten: chibi, matte, maksimal
